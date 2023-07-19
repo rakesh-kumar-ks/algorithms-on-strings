@@ -1,0 +1,32 @@
+/// input --> "urulagneb**ytic***0065"
+var a = "urulagneb**ytic***0065"
+var supertemp = "";
+function rever(input) {
+    var pattern = /[!@#$%^&*(),.?":{}|<>]/;
+    let temp = "";
+    for (let a1 = 0; a1 <= input.length; a1++) {
+        if (a1 == input.length && temp != "") {
+            let tempreg = temp;
+            temp = "";
+            supertemp = supertemp + tempreg.split("").reverse().join("");
+        }
+        if (input[a1] != undefined && pattern.test(input[a1])) {
+            if (temp != "") {
+                let tempreg = temp;
+                temp = "";
+                supertemp = supertemp + tempreg.split("").reverse().join("") + input[a1];
+            }
+            else {
+                supertemp = supertemp + input[a1];
+            }
+        }
+        if (input[a1] != undefined && !pattern.test(input[a1])) {
+            temp = temp + input[a1];
+        }
+    }
+}
+rever(a)
+console.log("supertemp", supertemp)
+
+output --> bengaluru**city***5600
+
